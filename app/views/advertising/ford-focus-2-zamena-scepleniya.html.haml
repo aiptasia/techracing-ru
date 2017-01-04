@@ -1,0 +1,61 @@
+%main.advertising
+
+  %section.hero
+    .data-container
+      .inner
+        %h1.title Ford Focus 2.<br>Замена сцепления по акции
+        %p.text Назовите промо-код и получите скидку <b>1000р</b> на работу по замене сцепления Ford&nbsp;Focus&nbsp;2 в автосервисе TechRacing.
+        = form_tag codeword_request_path, method: 'post' do
+          = hidden_field_tag :session_id , session.id
+          = hidden_field_tag :source , user_activity_source
+          = submit_tag 'Получить промо-код', class: 'cta'
+
+  %section.price
+    .data-container
+      %h2.section-title Стоимость работ по замене сцепления Ford Focus 2.
+      .desc
+        .text &nbsp;
+        .text Стоимость работ с учетом скидки по акции составит:
+        .text В процессе ремонта стоимость работ не увеличивается:
+        .text Вы не услышите другие цифры, когда позвоните нам:
+        .text Вы получаете диагностику подвески:
+      .card
+        .title Бензиновый двигатель
+        .text <strike>5999р</strike> 4999р
+        .text
+          %i.material-icons &#xE876;
+        .text
+          %i.material-icons &#xE876;
+        .text в подарок
+      .card
+        .title Дизельный двигатель
+        .text <strike>6499р</strike> 5499р
+        .text
+          %i.material-icons &#xE876;
+        .text
+          %i.material-icons &#xE876;
+        .text в подарок
+
+  %section.spare-parts
+    .data-container
+      %h2.section-title Лучшая цена на запчасти
+      %p.text Заполните форму, чтобы получить самое выгодное предложение на комплект сцепления именно для Вашего автомобиля. VIN-номер необходим для точного подбора запчастей.
+
+      .spare-parts-form
+        = form_tag price_request_path, method: "post", id: 'js-price-request-validate' do
+
+          = hidden_field_tag :session_id , session.id
+          = hidden_field_tag :source , user_activity_source
+
+          .form-input
+            = text_field_tag :name, '', class: 'form-control', required: '', placeholder: 'Имя *'
+
+          .form-input
+            = text_field_tag :phone, '', class: 'form-control', required: '', placeholder: 'Телефон *', :"data-mask" => '(999) 999-9999'
+
+          .form-input
+            = text_field_tag :vin, '', class: 'form-control', required: '', placeholder: 'VIN-номер *'
+
+          = submit_tag 'Узнать стоимость запчастей', class: 'cta'
+
+= render 'static/flash_modal'

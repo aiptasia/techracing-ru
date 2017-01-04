@@ -1,0 +1,133 @@
+@mixin header-placeholder($extra_padding: 0) {
+  padding-top: ($header-height + $extra_padding) * $leading;
+}
+
+@mixin header-theme($background) {
+  position: absolute;
+  top: 0;
+  z-index: 99;
+
+  width: 100%;
+  height: $navbar-height;
+  background: $background;
+}
+
+$navbar-height: $header-height * $leading;
+
+header {
+
+  width: 100%;
+  height: $navbar-height;
+  position: absolute;
+  background: transparent;
+  font-family: roboto-light;
+  color: $header-foreground-color;
+
+  &:after {
+    width: 100%;
+    height: $navbar-height;
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    content: '';
+    background: $header-blackout;
+  }
+
+  .tr-logo {
+    position: relative;
+    z-index: 99999;
+    float: left;
+    width: 150px;
+    line-height: $navbar-height;
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
+  }
+  .navbar-toggle {
+    position: relative;
+    z-index: 99999;
+    float: right;
+    line-height: $navbar-height;
+    i {
+      vertical-align: middle;
+      cursor: pointer;
+    }
+  }
+
+  // -----------------------------------
+  // Navbar mobile version (vertical)
+  // -----------------------------------
+
+  @include susy-media(max-width $mobile-menu-breakpoint) {
+    .navbar-nav {
+      position: absolute;
+      text-align: center;
+      z-index: 999;
+      top: $navbar-height;
+      right: 0;
+      width: 100%;
+      background: #4E4F5E;
+      display: none;
+
+      .navbar-link {
+        @include set-modular-scale(0);
+        padding: $leading * 0.5 $leading;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        white-space: nowrap;
+      }
+    }
+  }
+
+  // -----------------------------------
+  // Navbar mobile version (horizontal)
+  // -----------------------------------
+
+  @include susy-media(max-width $mobile-menu-breakpoint) {
+    .navbar-nav--horz {
+      position: absolute;
+      z-index: 999;
+      top: $navbar-height;
+      right: 0;
+      width: 100%;
+      background: #4E4F5E;
+      display: none;
+
+      .navbar-link {
+        @include set-modular-scale(0);
+        padding: $leading * 0.5 $leading;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        white-space: nowrap;
+      }
+    }
+  }
+
+  // ---------------------------
+  // Navbar desktop version
+  // ---------------------------
+
+  @include susy-media($mobile-menu-breakpoint) {
+    .navbar-nav {
+      .navbar-logo {
+        display: none;
+      }
+      position: relative;
+      z-index: 99999;
+      width: auto;
+      display: block;
+      background: transparent;
+      float: right;
+      .navbar-link {
+        display: inline-block;
+        line-height: $navbar-height;
+        padding: 0 $leading * 0.5;
+      }
+    }
+    .navbar-toggle {
+      display: none;
+    }
+    .tr-logo {
+      width: 300px;
+    }
+  }
+}

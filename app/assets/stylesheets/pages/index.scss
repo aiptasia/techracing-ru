@@ -1,0 +1,99 @@
+$hero_title_color: #fff;
+$hero_text_color: #fff;
+$hero_cta_color: #fff;
+$hero_title_font: roboto-regular, sans-serif;
+$hero_text_font: roboto-light, sans-serif;
+$hero_cta_font: roboto-regular, sans-serif;
+$background_color: $header_background_color, image-url('custom-background.jpg');
+
+// -----------------------------------------------------
+
+$named-breakpoints: (
+  "br1": 768px,
+  "br2": 1170px,
+  "br3": 1920px
+);
+
+main.index {
+
+  @include layout(hero, (
+    background: $background_color, padding: $header-height 0 0, font: roboto-regular, color: #fff, text-align: center
+  )) {
+
+    @include layout(inner-service, (margin: 1 0)) {
+      @include text(title, (m-scale: 2, margin: 0 0 1));
+      @include text(text, (m-scale: 0, margin: 0 0 1, font: roboto-light));
+      @include button(cta, (type: transparent));
+    }
+    @include layout(inner-custom, (margin: 1 0, display: none)) {
+      @include text(title, (m-scale: 2, margin: 0 0 1));
+      @include text(text, (m-scale: 0, margin: 0 0 1, font: roboto-light));
+      @include button(cta, (type: transparent));
+    }
+
+    // ---------------------------
+    // Breakpoint #1
+    // ---------------------------
+
+    @include breakpoint("br1") {
+      @include layout(inner-service, (span: 8, push: 2));
+    }
+
+    // ---------------------------
+    // Breakpoint #2
+    // ---------------------------
+
+    @include breakpoint("br2") {
+      @include layout(inner-service, (span: 6, push: 0, margin: 0, padding: 1, text-align: left)) {
+        @include text(title, (m-scale: 3));
+      }
+      @include layout(inner-custom, (span: 6, push: 0, margin: 2 0 1 0, padding: 1, text-align: left)) {
+        @include text(title, (m-scale: 3));
+        display: block;
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------
+
+$named-breakpoints: (
+  "br1": 768px,
+  "br2": 1170px,
+  "br3": 1920px
+);
+
+main.index {
+
+  @include layout(bullets, (text-align: center)) {
+
+    @include text(bullets-title, (color: #444, margin: 2, display: none));
+    @include layout(bullet, (padding: 1, text-align: center)) {
+      @include header(header, (type: outline-icon, icon-size: 2, m-scale: 2, color: #444, margin: 0 0 1));
+      @include text(text, (m-scale: 0, color: #666, margin: 0 0 1));
+      border-bottom: 1px solid #eee;
+    }
+
+    // ---------------------------
+    // Breakpoint #1
+    // ---------------------------
+
+    @include breakpoint("br1") {
+      @include text(bullets-title, (m-scale: 3, display: block));
+    }
+
+    // ---------------------------
+    // Breakpoint #2
+    // ---------------------------
+
+    @include breakpoint("br2") {
+      @include text(bullets-title, (m-scale: 3));
+      @include layout(bullet) {
+        @include header(header, (type: inline-icon, icon-size: 2));
+        //@include text(text, (text-align: left));
+        @include gallery(6 of 12);
+        border-bottom: none;
+      }
+    }
+  }
+}

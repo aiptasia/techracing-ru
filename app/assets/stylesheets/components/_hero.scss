@@ -1,0 +1,202 @@
+%__hero {
+
+  overflow: auto;
+}
+
+@mixin hero-layout($args) {
+  $background: map-get($args, background);
+  @if $background {
+    background: $background;
+    background-size: 150%;
+    background-attachment: scroll;
+    background-position: 50% 50%;
+  }
+}
+
+@mixin hero-inner($section_name, $params) {
+
+  .#{$section_name} {
+
+    $span: map-get($params, span);
+    @if $span {
+      @include span($span);
+    }
+
+    $margin: map-get($params, margin);
+    @if $margin {
+      margin: to-base-line($margin);
+    }
+
+    $push: map-get($params, push);
+    @if $push {
+      @include push($push);
+    }
+
+    @content;
+  }
+}
+
+
+
+@mixin layout($section_name, $params: null) {
+
+  .#{$section_name} {
+    overflow: auto;
+
+    @if $params {
+      @include parse_params($params);
+    }
+
+    @content;
+  }
+}
+
+@mixin header($section_name, $params) {
+
+  $icon_size: 1;
+  $value: map-get($params, icon-size);
+  @if $value {
+    $icon_size: $value;
+  }
+
+  .#{$section_name} {
+
+    @include parse_params($params);
+
+    .title {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    $header_type: map-get($params, type);
+    @if $header_type == outline-icon {
+      img, i {
+        height: $leading * $icon_size;
+        font-size: $leading * $icon_size;
+      }
+    } @elseif $header_type == inline-icon {
+      display: inline-block;
+      height: $leading * $icon_size;
+
+      img, i {
+        float: left;
+        height: $leading * $icon_size;
+        font-size: $leading * $icon_size;
+      }
+      .title {
+        float: left;
+        padding-left: $leading;
+        line-height: $leading * $icon_size;
+      }
+    } @else {
+    }
+  }
+}
+
+@mixin button($section_name, $params: null) {
+
+  .#{$section_name} {
+    @extend %button;
+    @include scotch-button-theme(#fff);
+    @include parse_params($params);
+  }
+  .#{$section_name}:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+  }
+}
+
+@mixin button-2($section_name, $params) {
+
+  .#{$section_name} {
+    @extend %button;
+    @include scotch-button-theme(#2196f3, #2196f3);
+  }
+  .#{$section_name}:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+  }
+}
+
+@mixin text($section_name, $params) {
+
+  .#{$section_name} {
+    @include parse_params($params);
+  }
+}
+
+@mixin parse_params($params) {
+
+  $margin: map-get($params, margin);
+  @if $margin {
+    margin: to-base-line($margin);
+  }
+
+  $padding: map-get($params, padding);
+  @if $padding {
+    padding: to-base-line($padding);
+  }
+
+  $span: map-get($params, span);
+  @if $span {
+    @include span($span);
+  }
+
+  $push: map-get($params, push);
+  @if $push {
+    @include push($push);
+  }
+
+  $background: map-get($params, background);
+  @if $background {
+    background: $background;
+    background-size: 150%;
+    background-attachment: scroll;
+    background-position: 50% 50%;
+  }
+
+  $font: map-get($params, font);
+  @if $font {
+    font-family: $font;
+  }
+
+  $color: map-get($params, color);
+  @if $color {
+    color: $color;
+  }
+
+  $border: map-get($params, border);
+  @if $border {
+    border: $border;
+  }
+
+  $border-bottom: map-get($params, border-bottom);
+  @if $border-bottom {
+    border-bottom: $border-bottom;
+  }
+
+  $border-color: map-get($params, border-color);
+  @if $border-color {
+    border-color: $border-color;
+  }
+
+  $border-radius: map-get($params, border-radius);
+  @if $border-radius {
+    border-radius: $border-radius;
+  }
+
+  $text_align: map-get($params, text-align);
+  @if $text_align {
+    text-align: $text_align;
+  }
+
+  $modular_scale: map-get($params, m-scale);
+  @if $modular_scale {
+    @include set-modular-scale($modular_scale);
+  }
+
+  $display: map-get($params, display);
+  @if $display {
+    display: $display;
+  }
+}

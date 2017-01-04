@@ -1,0 +1,89 @@
+$hero_title_color: #fff;
+$hero_text_color: #fff;
+$hero_cta_color: #fff;
+$hero_title_font: roboto-regular, sans-serif;
+$hero_text_font: roboto-light, sans-serif;
+$hero_cta_font: roboto-regular, sans-serif;
+$background_color: $header_background_color, image-url('service-background.jpg');
+
+// -----------------------------------------------------
+
+$named-breakpoints: (
+  "br1": 768px,
+  "br2": 1170px,
+  "br3": 1920px
+);
+
+main.service {
+
+  @include layout(hero, (
+    background: $background_color, padding: $header-height 0 0, font: roboto-regular, color: #fff, text-align: center
+  )) {
+    @include layout(inner, (margin: 1 0)) {
+      @include text(title, (m-scale: 2, margin: 0 0 1));
+      @include text(text, (m-scale: 0, margin: 0 0 1, font: roboto-light));
+      @include button(cta, (type: transparent));
+    }
+
+    // ---------------------------
+    // Breakpoint #1
+    // ---------------------------
+
+    @include breakpoint("br1") {
+      @include layout(inner, (span: 8, push: 2));
+    }
+
+    // ---------------------------
+    // Breakpoint #2
+    // ---------------------------
+
+    @include breakpoint("br2") {
+      @include layout(inner, (span: 6, push: 0, margin: 0, padding: 1 1 2 1, text-align: left)) {
+        @include text(title, (m-scale: 3));
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------
+
+$named-breakpoints: (
+  "br1": 768px,
+  "br2": 1170px,
+  "br3": 1920px
+);
+
+main.service {
+
+  @include layout(bullets, (text-align: center)) {
+
+    @include text(bullets-title, (color: #444, margin: 1, display: none));
+    @include layout(bullet, (padding: 1, text-align: center)) {
+      @include header(header, (type: outline-icon, icon-size: 2, m-scale: 2, color: #444, margin: 0 0 1));
+      @include text(text, (m-scale: 0, color: #666, margin: 0 0 1));
+      border-bottom: 1px solid #eee;
+    }
+
+    // ---------------------------
+    // Breakpoint #1
+    // ---------------------------
+
+    @include breakpoint("br1") {
+      @include text(bullets-title, (m-scale: 3, display: block));
+    }
+
+    // ---------------------------
+    // Breakpoint #2
+    // ---------------------------
+
+    @include breakpoint("br2") {
+      @include text(bullets-title, (m-scale: 3));
+      @include layout(bullet) {
+        @include header(header, (type: inline-icon, icon-size: 2));
+        //@include text(text, (text-align: left));
+        @include gallery(6 of 12);
+        border-bottom: none;
+      }
+    }
+  }
+}

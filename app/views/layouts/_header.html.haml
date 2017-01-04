@@ -1,0 +1,18 @@
+%header
+  .data-container
+    %nav.navbar{:role => 'navigation'}
+      .tr-logo
+        = link_to image_tag('logo.png', alt: 'TechRacing логотип'), root_path
+
+      .navbar-toggle
+        %i.material-icons.md-light{id: 'js-navbar-toggle'} &#xE5D2;
+
+      .navbar-nav{id: 'js-navbar-nav'}
+        .navbar-link
+          = link_to 'Сервис', service_path
+        .navbar-link
+          = link_to 'Тюнинг', custom_path
+        .navbar-link
+          = link_to 'Наши работы', collections_path
+        .navbar-link
+          = link_to 'Контакты', contacts_path

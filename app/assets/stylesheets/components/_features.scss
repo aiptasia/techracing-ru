@@ -1,0 +1,15 @@
+%features {
+  @include susy-clearfix;
+  .feature {
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+@mixin feature-layout($height, $border: false) {
+  .feature {
+    @if $border {
+      border: 1px solid #666;
+    }
+    height: $height;
+  }
+}

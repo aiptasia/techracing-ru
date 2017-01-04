@@ -1,0 +1,100 @@
+$named-breakpoints: (
+  "br1": 768px,
+  "br2": 1170px,
+  "br3": 1920px
+);
+
+// ---------------------------
+// Breakpoint #0
+// ---------------------------
+
+.call-back-form {
+  @include container(95%);
+  input {
+    @include set-modular-scale(0);
+  }
+}
+
+// ---------------------------
+// Breakpoint #1
+// ---------------------------
+
+@include breakpoint("br1") {
+  .call-back-form {
+    @include container(90%);
+    input {
+      @include set-modular-scale(1);
+    }
+  }
+}
+
+// ---------------------------
+// Breakpoint #2
+// ---------------------------
+
+@include breakpoint("br2") {
+  .call-back-form {
+    @include container(85%);
+  }
+}
+
+// ---------------------------
+// call-back style
+// ---------------------------
+
+.call-back {
+  background: $header-background-color;
+  background-color: #fff;
+  padding-top: $leading * 2;
+  padding-bottom: $leading * 1.5;
+
+  .title {
+    @include set-modular-scale(1);
+    color: #fff;
+    text-align: center;
+  }
+
+  .call-back-form {
+    margin-top: $leading * 1;
+    margin-bottom: $leading * 1;
+
+    .form-group {
+      @include span(4 isolate inside no-gutters);
+
+      .ui-input {
+        line-height: $leading * 2;
+        height: $leading * 2;
+        border: 1px solid #fff;
+        color: #fff;
+        &.first {
+          border-top-left-radius: 15px;
+          border-bottom-left-radius: 15px;
+          border-right: none;
+        }
+        &.last {
+          border-top-right-radius: 15px;
+          border-bottom-right-radius: 15px;
+          border-left: none;
+          text-align: center;
+        }
+        &.last:hover {
+          cursor: pointer;
+          background-color: rgba(38, 57, 187, 0.2);
+        }
+        input,
+        input:focus {
+          color: #fff;
+          outline: none;
+          border: none;
+          background-color: transparent;
+          padding-left: $leading;
+        }
+        input.cta {
+          padding: 0;
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

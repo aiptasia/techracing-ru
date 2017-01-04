@@ -1,0 +1,18 @@
+$susy: (
+  columns: 12,
+  gutters: 0.25,
+  gutter-position: split,
+  global-box-sizing: border-box,
+  //debug: (image: show-columns)
+);
+
+@import "susy";
+@include border-box-sizing;
+
+// TODO: draw the baseline grid with html5 canvas
+body {
+  @if $base-line-grid-debug {
+    background-size: 1px $leading * 0.5;
+    background-image: linear-gradient(to bottom, #666 1px, transparent 1px);
+  }
+}

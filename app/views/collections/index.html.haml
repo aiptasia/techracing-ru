@@ -1,0 +1,26 @@
+%main.collections
+  .header-theme
+
+  %section.hero
+    .data-container
+      .inner
+        .meta-data
+          Альбомов:
+          = @collections.size
+          •
+          Фотографий:
+          = @media.size
+        .contacts
+          СПб, Кондратьевский пр-кт, д.2, корп.4Б • (812)677-48-47
+
+  %section.gallery
+    .data-container
+      - @collections.each do |collection|
+        = link_to collection_path(collection) do
+          .cover
+            = image_tag preview_medium_asset_path(@covers[collection.id].first), alt: ''
+            .meta-info
+              .title
+                = collection.title1
+              .text
+                = collection.title2

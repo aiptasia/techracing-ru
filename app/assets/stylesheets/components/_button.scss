@@ -1,0 +1,83 @@
+$button-padding: $leading*0.5 $leading;
+$font-size: type-scale(-1);                // utility function
+$button-bgcolor: $primary-color;           // from 'base/_colors.scss'
+$button-border-width: 2px;                 // from 'component/_input.scss'
+$button-color-hover: $primary-color;       // from 'base/_colors.scss'
+$button-font-size: 1rem;
+
+
+
+
+
+$btn-padding: $leading*0.5 $leading;
+$btn-ms: 1;
+$btn-color: #fff;
+$btn-bg-color: transparent;
+
+%button {
+  display: inline-block;
+  cursor: pointer;
+  border-style: solid;
+  padding: $btn-padding;
+  font-size: 1rem;//$button-font-size;
+  -font-weight: bold;
+  border-width: $button-border-width;
+  border-radius: 4px;
+}
+
+@mixin btn-color-theme($params) {
+
+  $color: map-get($params, color);
+  @if $color {
+    color: $color
+  }
+}
+
+@mixin button-theme($color, $background_color, $border_color) {
+  @if $color {
+    color: $color;
+  }
+  @if $background_color {
+    background-color: $background_color;
+  }
+  @if $border_color {
+    border-color: $border_color;
+  }
+}
+
+@mixin scotch-button-theme($color, $color-text-hover: #fff) {
+    color: $color;
+    border-color: $color;
+    background-color: transparent;
+
+    &:hover {
+        color: $color-text-hover;
+        background-color: $color;
+    }
+}
+
+.scotch-button {
+    @extend %button;
+    @include scotch-button-theme($primary-color);
+
+    &.secondary {
+        @include scotch-button-theme($primary-color);
+    }
+}
+
+/*
+.hero-button {
+  $btn-padding: $leading*0.5 $leading;
+  $btn-ms: 1;
+  $btn-color: #fff;
+  $btn-bg-color: transparent;
+
+  @extend %button;
+  @include color-theme((color: #fff, background-color: ));
+  border-radius: 6px;
+
+  &.secondary {
+      @include color-theme(#fff);
+  }
+}
+*/

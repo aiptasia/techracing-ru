@@ -1,0 +1,67 @@
+%footer
+  .data-container
+    .footer-middle
+      %nav.service{:role => 'navigation'}
+        %span Автосервис
+        %ul
+          %li
+            %a Диагностика автомобиля
+          %li
+            %a Техническое обслуживание
+          %li
+            %a Ремонт ходовой части
+          %li
+            %a Ремонт двигателей
+          %li
+            %a Ремонт коробок передач
+          %li
+            %a Автоэлектрика
+      %nav.custom{:role => 'navigation'}
+        %span Тюнинг
+        %ul
+          %li
+            %a Доработка двигателей
+          %li
+            %a Свап проекты
+          %li
+            %a Каркасы безопасности
+          %li
+            %a Выпускные системы
+          %li
+            %a Кастом
+          %li
+            %a Настройка ECU
+      %nav.contacts
+        %span Контакты
+        %ul
+          %li 195009, Санкт-Петербург, Кондратьевский&nbsp;пр-кт,&nbsp;д.2,&nbsp;корп.4Б
+        %ul
+          %li
+            %a{href: "tel:+79995274847"}+7 (999) 527-48-47
+          %li
+            %a{href: "tel:+78126774847"}+7 (812) 677-48-47
+        %ul
+          %li
+            e-mail:&nbsp;
+            %a{:href => "mailto:welcome@techracing.ru"}welcome@techracing.ru
+        %ul.social
+          %li.icon-vk
+            = link_to 'http://www.vk.com/techracing', target: '_blank' do
+              %i.fa.fa-vk
+          %li.icon-instagram
+            = link_to 'http://instagram.com/techracingspb', target: '_blank' do
+              %i.fa.fa-instagram
+          %li.icon-google-plus
+            = link_to 'https://plus.google.com/b/104841380020349882160/104841380020349882160/about?hl=ru', target: '_blank' do
+              %i.fa.fa-google-plus-square
+          %li.icon-flickr
+            = link_to 'http://www.flickr.com/photos/techracing', target: '_blank' do
+              %i.fa.fa-flickr
+          / %li
+          /   %i.fa.fa-youtube
+    %hr
+    .footer-lower
+      .copyright
+        %span © #{Time.now.year} TechRacing
+      .location
+        %span Санкт-Петербург

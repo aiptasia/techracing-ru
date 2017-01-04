@@ -1,0 +1,82 @@
+%main.index
+
+  %section.hero
+    .data-container
+      .inner-service
+        %h1.title Станция технического обслуживания
+        %p.text Диагностика, техническое обслуживание и ремонт Вашего автомобиля. Полный спектр работ от команды автосервиса TechRacing.
+        = link_to service_path do
+          .cta Узнать больше
+      .inner-custom
+        %h1.title Кастом и технический тюнинг
+        %p.text Глубокая доработка двигателей, настройка блоков управления, кастом и сварка в аргоне. Постройка проектов с нуля и обслуживание уже готовых корчей.
+        = link_to custom_path do
+          .cta Узнать больше
+
+  %section.bullets
+    %p.bullets-title Ваш автомобиль - это наша забота
+    .data-container
+      .bullet
+        .header
+          %i.material-icons.md-blue &#xE3DC;
+          %h2.title Диагностика и ремонт
+        %p.text
+          Вникнем в суть проблемы и решим ее правильным путем. Мы быстро и качественно выполняем стандартные работы, а также любим находить решения в нестандартных ситуациях.
+        .description
+      .bullet
+        .header
+          %i.material-icons.md-blue &#xE8B8;
+          %h2.title Запасные части
+        %p.text
+          Не беспокойтесь о запасных частях. Мы найдем и привезем все необходимое для ремонта Вашего автомобиля. Подберем запчасти с оптимальным соотношением цены и качества.
+        .description
+      .bullet
+        .header
+          %i.material-icons.md-blue &#xE91F;
+          %h2.title Что с моим авто?
+        %p.text
+          Будем держать Вас в курсе всех проводимых работ. Телефон, E-Mail, SMS, WhatsApp, Viber: выбирайте удобные способы связи.
+        .description
+      .bullet
+        .header
+          %i.material-icons.md-blue &#xE889;
+          %h2.title История ремонтов
+        %p.text
+          Сохраним для Вас историю ремонтов, которую всегда можно будет посмотреть и распечатать через личный кабинет.
+        .description
+      .bullet
+        .header
+          %i.material-icons.md-blue &#xE8A1;
+          %h2.title Варианты оплаты
+        %p.text
+          Оплачивайте запчасти и работы любым удобным способом: наличная и безналичная форма оплаты, перевод на банковскую карту, bitcoin.
+        .description
+      .bullet
+        .header
+          %i.material-icons.md-blue &#xE55F;
+          %h2.title Как к нам попасть
+        %p.text
+          Мы ценим Ваше время, поэтому работаем по предварительной записи. Примем автомобиль в удобное для Вас время и отдадим его в срок.
+        .description
+
+  %section.call-back
+    .title Записаться на диагностику или ремонт
+    .call-back-form
+      = form_tag new_callback_path, method: "post", id: "call-back-validate" do
+
+        = hidden_field_tag :session_id , session.id
+        = hidden_field_tag :source , user_activity_source
+
+        .form-group
+          .ui-input.first
+            = text_field_tag :name, '', class: 'form-control', required: '', placeholder: 'Имя'
+
+        .form-group
+          .ui-input
+            = text_field_tag :phone, '', class: 'form-control', required: '', placeholder: 'Телефон', :"data-mask" => '(999) 999-9999'
+
+        .form-group
+          .ui-input.last
+            = submit_tag 'Записаться', class: 'cta'
+
+= render 'flash_modal'

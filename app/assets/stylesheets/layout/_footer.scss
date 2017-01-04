@@ -1,0 +1,131 @@
+$named-breakpoints: (
+  "br1": 768px,
+  "br2": 1170px,
+  "br3": 1920px
+);
+
+footer {
+
+  // ---------------------------
+  // Breakpoint #0
+  // ---------------------------
+
+  .service {
+    display: none;
+  }
+  .custom {
+    display: none;
+  }
+  .footer-middle {
+    @include susy-clearfix;
+  }
+  .footer-lower {
+    height: $leading;
+    .copyright {
+      @include span(6 first);
+    }
+    .location {
+      @include span(6 last);
+      text-align: right;
+    }
+  }
+
+  // ---------------------------
+  // Breakpoint #1
+  // ---------------------------
+
+  @include breakpoint("br1") {
+    .service {
+      @include span(3);
+      display: block;
+    }
+    .custom {
+      @include span(3);
+      display: block;
+    }
+    .contacts {
+      @include span(5 last);
+    }
+  }
+}
+
+footer {
+  background-color: $footer-background-color;
+  __padding-top: $leading * 1.5;
+
+  hr {
+    border: none;
+    color: $footer-foreground-color;
+    background-color: $footer-foreground-color;
+    height: 1px;
+    margin: 0;
+  }
+  nav {
+    span {
+      display: block;
+      color: $footer-accent-color;
+      margin-bottom: $leading * 0.5;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      li {
+        @include set-modular-scale(-1);
+      }
+      a {
+        color: $footer-foreground-color;
+      }
+      a:focus, a.focus, a:hover {
+        color: $footer-accent-color;
+        cursor: pointer;
+      }
+    }
+    color: $footer-foreground-color;
+  }
+  .footer-middle {
+    padding: $leading 0;
+  }
+  .footer-lower {
+    @include set-modular-scale(-1);
+    padding: $leading * 0.25 0;
+    span {
+      color: $footer-foreground-color;
+    }
+  }
+  .social {
+    margin-top: $leading * 0.5;
+    list-style-type: none;
+    li {
+      display: inline-block;
+      padding-right: 1rem;
+    }
+    .fa {
+      font-size: 2rem;
+    }
+  }
+  .icon-vk {
+    a:focus, a.focus, a:hover {
+      color: $icon-vk-color;
+    }
+  }
+  .icon-google-plus {
+    a:focus, a.focus, a:hover {
+      color: $icon-google-plus-color;
+    }
+  }
+  .icon-youtube {
+    a:focus, a.focus, a:hover {
+      color: $icon-youtube-color;
+    }
+  }
+  .icon-instagram {
+    a:focus, a.focus, a:hover {
+      color: $icon-instagram-color;
+    }
+  }
+  .icon-flickr {
+    a:focus, a.focus, a:hover {
+      color: $icon-flickr-color;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<section class="medium">
+  <div class="container-fluid">
+    <div class="hidden-xs col-md-4">
+      <div class="description">
+        <%= link_to collection_path(@collection) do %>
+          <h1><%= "#{@collection.title1}" %></h1>
+          <h2><%= "#{@collection.title2}" %></h2>
+        <% end %>
+        <span>Дата съемки: <%= @medium.created_at.to_date %></span>
+        <%= link_to "https://plus.google.com/share?#{{url: request.url}.to_query}", target: '_blank' do %>
+          <%= image_tag "https://www.gstatic.com/images/icons/gplus-32.png" %>
+        <% end %>
+        <%= @medium.description.html_safe %>
+      </div>
+    </div>
+
+    <div class="slide-wrapper col-xs-12 col-md-8">
+      <div class="slide">
+        <div class="control-panel">
+          <div class="col-xs-12">
+            <h4><%= "Фото #{@position} из #{@count}" %></h4>
+          </div>
+        </div>
+
+        <%= image_tag gallery_medium_asset_path(@medium), alt: "#{@collection.title1}. #{@collection.title2}", class: 'img-responsive' %>
+        <%= link_to '', media_path(@collection, @prev_medium), class: 'area-prev' %>
+        <%= link_to '', media_path(@collection, @next_medium), class: 'area-next' %>
+        <%= link_to 'загрузить...', media_download_path, class: 'btn btn-download' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>

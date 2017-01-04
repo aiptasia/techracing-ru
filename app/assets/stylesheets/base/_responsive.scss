@@ -1,0 +1,89 @@
+@function to-base-line($boundaries) {
+  $result: ();
+  @for $i from 1 through length($boundaries) {
+    $result: append($result, nth($boundaries, $i) * $leading);
+  }
+  @return $result;
+}
+
+@mixin breakpoint($breakpoint) {
+  @if (map-has-key($named-breakpoints, $breakpoint)) {
+    $breakpoint: map-get($named-breakpoints, $breakpoint);
+  }
+  @else{
+    @warn "Couldn't find named breakpoint: " + $breakpoint;
+  }
+  @include susy-media($breakpoint) {
+    @content;
+  }
+}
+
+@function font-size-scale($level) {
+  @return map-get($font-size-scale, $level);
+}
+
+@function line-height-scale($level) {
+  @return map-get($line-height-scale, $level);
+}
+
+@mixin set-modular-scale($level: 0, $margin: null) {
+
+  font-size: font-size-scale($level);
+  line-height: line-height-scale($level);
+
+  @if $margin == with-margin {
+    margin-bottom: $leading * 0.5;
+    @if $level > 0 {
+      margin-top: $leading * 0.5;
+    }
+  }
+  @if $margin == without-margin {
+    margin: 0;
+  }
+}
+
+$named-breakpoints: (
+  "br1": 768px,
+  "br2": 1170px,
+  "br3": 1920px
+);
+
+html{
+  @include responsive("font-size", 12px,
+    (
+      "br1": 14px,
+      "br2": 16px,
+      "br3": 18px
+    )
+  );
+}
+
+$font-size-scale: (
+ -1: 0.75rem,
+  0: 1rem,
+  1: 1.333rem,
+  2: 1.777rem,
+  3: 2.368rem
+);
+
+$line-height-scale: (
+ -1: $leading,
+  0: $leading,
+  1: $leading * 1.25,
+  2: $leading * 1.50,
+  3: $leading * 1.75
+);
+
+.data-container {
+  @include container(85%);
+
+  @include breakpoint("br1") {
+    @include container(85%);
+  }
+  @include breakpoint("br2") {
+    @include container(85%);
+  }
+  @include breakpoint("br3") {
+    @include container(80%);
+  }
+}

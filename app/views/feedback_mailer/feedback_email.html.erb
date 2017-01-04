@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Сообщение от посетителя сайта www.techracing.ru</h1>
+    <p>
+      Имя: <%= @name %>
+    <p>
+      E-mail: <%= @email %>
+    <p>
+      Сообщение: <%= @text %>
+    <p>
+      <%= url_for(host: "www.example.com", controller: "static", action: "service") %>
+    <p>
+      <%= url_for(controller: "static", action: "custom") %>
+
+  </body>
+</html>

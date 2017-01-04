@@ -1,0 +1,25 @@
+.test {
+  @include container(80%);
+  h1, h2, h3 {
+    font-family: roboto-regular, sans-serif;
+    font-weight: normal;
+    color: $heading-color;
+    background-color: #ccc;
+  }
+  h1 {
+    @include set-modular-scale(3, with-margin);
+  }
+  h2 {
+    @include set-modular-scale(2, with-margin);
+  }
+  h3 {
+    @include set-modular-scale(1, with-margin);
+  }
+  h4 {
+    @include set-modular-scale(0, with-margin);
+  }
+  p {
+    @include set-modular-scale(0, with-margin);
+    color: $foreground-color;
+  }
+}

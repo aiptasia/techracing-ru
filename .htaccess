@@ -1,0 +1,28 @@
+<files *.css.gz>
+    AddType "text/css" .gz
+    AddEncoding gzip .gz
+</files>
+
+<files *.js.gz>
+    AddType "text/javascript" .gz
+    AddEncoding gzip .gz
+</files>
+
+RewriteEngine on
+ReWriteCond %{HTTP:accept-encoding} gzip
+ReWriteCond %{REQUEST_FILENAME} !^.+\.gz$
+RewriteCond %{REQUEST_FILENAME}.gz -f
+RewriteRule ^(.+) $1.gz [QSA,L]
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/javascript "access 11 month"
+    ExpiresByType text/css "access 11 month"
+    ExpiresByType image/jpeg "access 11 month"
+    ExpiresByType image/png "access 11 month"
+    ExpiresByType image/svg+xml "access 11 month"
+    ExpiresByType application/x-font-ttf "access 11 month"
+    ExpiresByType application/x-woff "access 11 month"
+    ExpiresByType application/x-icon "access 11 month"
+</IfModule>
+

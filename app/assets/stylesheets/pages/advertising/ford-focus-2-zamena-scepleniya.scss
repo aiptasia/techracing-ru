@@ -1,0 +1,196 @@
+$named-breakpoints: (
+  "br1": 768px,
+  "br2": 1170px,
+  "br3": 1920px
+);
+
+main.advertising {
+
+  $heading_color: #444;
+
+  font-family: roboto-light;
+
+  .section-title {
+    @include set-modular-scale(3);
+    padding-bottom: to-base-line(2);
+    text-align: center;
+    color: $heading_color;
+  }
+}
+
+main.advertising .hero {
+
+  $text_color: #fff;
+  $accent_color: #FFE800;
+  $background: $header_background_color, image-url('ford-focus-2--1920x1080.jpg') 50%;
+
+  background: $background;
+  padding-top: to-base-line($header-height);
+  overflow: auto;
+  color: $text_color;
+
+  .inner {
+    margin: to-base-line(2 0);
+    @include span(7);
+    @include push(1);
+
+    .title {
+      @include set-modular-scale(3);
+      margin-bottom: to-base-line(2);
+      font-family: roboto-regular;
+    }
+    .text {
+      @include set-modular-scale(2);
+      margin-bottom: to-base-line(2);
+      b {
+        color: $accent_color;
+      }
+    }
+    .cta {
+      @extend %button;
+      @include button-theme($text_color, transparent, $accent_color);
+      @include set-modular-scale(2);
+    }
+  }
+}
+
+main.advertising .price {
+
+  $text_color: #666;
+  $accent_color: #2196F3;
+  $heading_color: #444;
+
+  margin: to-base-line(2 0);
+  @include set-modular-scale(0);
+
+  .desc {
+    @include span(6);
+    padding: to-base-line(1 0);
+    .text {
+      text-align: right;
+      color: $text_color;
+      line-height: to-base-line(2);
+      white-space: nowrap;
+    }
+  }
+  .card {
+    @include span(3);
+    padding: to-base-line(1 0.5);
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+    .title {
+      line-height: to-base-line(2);
+      color: $heading_color;
+    }
+    .text {
+      border-top: 1px solid #eee;
+      color: $accent_color;
+      line-height: to-base-line(2);
+      white-space: nowrap;
+      strike {
+        color: $text_color;
+        font-weight: normal;
+      }
+    }
+  }
+
+  // ---------------------------
+  // Breakpoint #2
+  // ---------------------------
+
+  @include breakpoint("br2") {
+    @include set-modular-scale(1);
+  }
+}
+
+main.advertising .spare-parts {
+
+  $text_color: #666;
+  $accent_color: #2196F3;
+  $cta_color: #fff;
+  $input_border_color: #aaa;
+
+  background: #F2F4F9;
+  padding: to-base-line(2 0);
+  overflow: auto;
+
+  .text {
+    @include container(80%);
+    @include set-modular-scale(1);
+    text-align: center;
+    color: $text_color;
+    padding-bottom: to-base-line(1);
+  }
+  .spare-parts-form {
+    @include span(6);
+    @include push(3);
+
+    .form-input {
+      margin-bottom: to-base-line(1);
+      border: 1px solid $input_border_color;
+      border-radius: 4px;
+      line-height: to-base-line(2);
+      height: to-base-line(2);
+
+      input,
+      input:focus {
+        color: $text_color;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        padding-left: to-base-line(1);
+        @include set-modular-scale(1);
+      }
+    }
+    .cta {
+      @extend %button;
+      @include button-theme($cta_color, $accent_color, $accent_color);
+      @include set-modular-scale(2);
+      width: 100%;
+    }
+  }
+}
+
+
+/*
+@include theme(background: transparent, color: #fff, border-color: #eee);
+
+main.advertising {
+
+  @include layout(hero, (background: $hero_background, padding: $header-height 0 1)) {
+    color: #fff;
+    @include layout(inner, (margin: 2 0, span: 7, push: 1)) {
+      @include text(title, (m-scale: 3, margin: 0 0 2)) {
+        @include theme(color: #444);
+      }
+      @include text(text, (m-scale: 2, margin: 0 0 2)) {
+        @include theme(color: #666);
+      }
+      @include button(cta, (m-scale: 2, type: transparent)) {
+        @include theme(background: transparent, color: #fff, border-color: #eee);
+      }
+    }
+  }
+}
+*/
+/*
+main.advertising {
+
+  font-family: roboto-light;
+
+  @include layout(hero, (
+    background: $hero_background, padding: $header-height 0 1, color: #fff
+  )) {
+    @include layout(inner, (margin: 2 0, span: 7, push: 1)) {
+      @include text(title, (m-scale: 3, margin: 0 0 2));
+      @include text(text,  (m-scale: 2, margin: 0 0 2, font: roboto-light));
+      @include button(cta, (m-scale: 2, type: transparent, border-color: #FFE800));
+      b {
+        color: #FFE800;
+      }
+    }
+  }
+}*/
+

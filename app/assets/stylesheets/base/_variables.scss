@@ -1,0 +1,44 @@
+// ---------------------------
+// Typography variables
+// ---------------------------
+
+$base-font-size: 1rem;
+$leading: $base-font-size * 1.5;
+$base-line-grid-debug: false;
+
+// ---------------------------
+// Color scheme
+// ---------------------------
+
+$background-color: #fff;
+$foreground-color: #666;
+$heading-color: #444;
+$primary-color: #2196f3;
+
+// ---------------------------
+// Header variables
+// ---------------------------
+
+$header-height: 3;  /* in leading */
+$mobile-menu-breakpoint: 768px;
+$header-blackout: rgba(0, 0, 0, 0.2);
+$header-foreground-color: #fff;
+$header-background-color: linear-gradient(147deg, rgba(12, 3, 23, 0.9), rgba(38, 114, 169, 0.7));
+
+//$header-background-color-1: linear-gradient(147deg, rgba(38, 57, 187, 0.9), rgba(255, 84, 34, 0.6));
+//$header-background-color-2: linear-gradient(147deg, rgba(53, 1, 118, 0.9), rgba(229, 106, 106, 0.6));
+//$header-background-color-2: linear-gradient(147deg, rgba(40, 4, 94, 0.9), rgba(123, 20, 20, 0.8));
+
+// ---------------------------
+// Footer variables
+// ---------------------------
+
+$footer-foreground-color: #a3a3a3;
+$footer-background-color: #444;
+$footer-accent-color: #fff;
+$icon-vk-color: #45668e;
+$icon-google-plus-color: #C20806;
+$icon-youtube-color: #bb0000;
+$icon-instagram-color: #2C6A93;
+$icon-flickr-color: #FF1981;
+

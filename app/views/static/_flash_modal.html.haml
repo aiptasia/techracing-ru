@@ -1,0 +1,9 @@
+- flash.each do |name, message|
+  .modal{id:'modal'}
+    .content
+      .title
+        = message['title']
+      .text
+        = message['text']
+      = link_to '' do
+        .cta.modalClose Закрыть

@@ -1,0 +1,59 @@
+%main.custom
+
+  %section.hero
+    .data-container
+      .inner
+        %h1.title Кастом и технический тюнинг
+        %p.text Глубокая доработка двигателей, настройка блоков управления, кастом и сварка в аргоне. Постройка проектов с нуля и обслуживание уже готовых корчей.
+        = link_to '#call-back', id: 'js-call-back' do
+          .cta Записаться на консультацию
+
+  %section.bullets
+    .data-container
+      .bullet
+        .header
+          %h2.title 1. Доработка двигателей
+        %p.text Глубокая доработка двигателей под увеличение мощности. Установка кованой поршневой, строкер китов, турбокитов, гильзовка мокрыми гильзами, портинг ГБЦ, расчет и изменение степени сжатия ЦПГ.
+      .bullet
+        .header
+          %h2.title 2. Свап проекты
+        %p.text Замена двигателей и коробок передач на модели от других производителей, свапы АКПП на МКПП, переделка автомобилей под полный/задний привод.
+      .bullet
+        .header
+          %h2.title 3. Каркасы безопасности
+        %p.text Изготовление каркасов безопасности по приложению J, А также пространственные рамы в передней или задней части автомобиля. Любые конфигурации под Ваши задачи.
+      .bullet
+        .header
+          %h2.title 4. Выпускные системы
+        %p.text Кастом выпускные системы из нержавеющей стали: AISI-321 и AISI-304. Выпускные коллектора под любые конфигурации двигателя и турбонаддува, даун и фронтпайпы, раздвойки, катбеки.
+      .bullet
+        .header
+          %h2.title 5. Настройка ECU
+        %p.text Предварительная настройка блоков управления, а также мощностная настройка на диностенде. AEM, Apexi PowerFC, MOTEC, Mitshubishi Evolution, Subaru.
+      .bullet
+        .header
+          %h2.title 6. Кастом
+        %p.text Работа с алюминием, нержавеющей сталью, трубами, сварка в аргоне. Любые работы с металлом, которые необходимы для постройки полноценного спортивного автомобиля.
+
+  %section.call-back{id: 'call-back'}
+    .data-container
+      .title Записаться на консультацию
+      .call-back-form
+        = form_tag new_callback_path, method: "post", id: 'call-back-validate' do
+
+          = hidden_field_tag :session_id , session.id
+          = hidden_field_tag :source , user_activity_source
+
+          .form-group
+            .ui-input.first
+              = text_field_tag :name, '', class: 'form-control', required: '', placeholder: 'Имя'
+
+          .form-group
+            .ui-input
+              = text_field_tag :phone, '', class: 'form-control', required: '', placeholder: 'Телефон', :"data-mask" => '(999) 999-9999'
+
+          .form-group
+            .ui-input.last
+              = submit_tag 'Записаться', class: 'cta'
+
+= render 'flash_modal'

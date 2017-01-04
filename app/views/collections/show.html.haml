@@ -1,0 +1,29 @@
+%main.collection
+  .header-theme
+
+  %section.hero
+    .data-container
+      .inner
+        .meta-data
+          = @collection.title1
+          •
+          = @collection.title2
+
+  %section.gallery
+    .data-container
+      .description
+        .title
+          = "#{@collection.title1}"
+        .subtitle
+          = "#{@collection.title2}"
+        .meta-data
+          = "#{@media.size} фото / 0 видео"
+          <br>
+          = "Дата обновления: #{@collection.updated_at.to_date}"
+        .text
+          = @collection.description.html_safe
+      .media
+        - @media.each do |medium|
+          / = link_to media_path(@collection, medium) do
+          .cover
+            = image_tag preview_medium_asset_path(medium), alt: ''

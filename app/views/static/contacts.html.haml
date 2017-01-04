@@ -1,0 +1,67 @@
+%main.contacts
+  .header-theme
+
+  .data-container
+    .div{:itemscope => '', :itemtype => "http://schema.org/LocalBusiness"}
+      %section.contact-info
+        %h1.heading <span itemprop="name">TechRacing</span> Контакты
+        .div{:itemprop => "address", :itemscope => '', :itemtype => "http://schema.org/PostalAddress"}
+          %p.text
+            %strong Наш адрес: <br>
+            <span itemprop="postalCode">195009</span>, <span itemprop="addressLocality">Санкт-Петербург</span>, <span itemprop="streetAddress">Кондратьевский&nbsp;пр-кт,&nbsp;д.2,&nbsp;корп.4Б.</span> <br>
+            %a{:href => root_path}посмотреть на карте
+        %p.text
+          %strong Время работы: <br>
+          <time itemprop="openingHours" datetime="Mo,Tu,We,Th,Fr 11:00−20:00">Пн-Пт, 11.00 - 20.00</time> <br>
+          сб, вс - выходные дни
+        %p.text
+          %strong Наши телефоны: <br>
+          %a{href: "tel:+78126774847"} <span itemprop="telephone">+7 (812) 677-48-47</span>
+          &nbsp;- по общим вопросам <br>
+          %a{href: "tel:+79995274847"} <span itemprop="telephone">+7 (999) 527-48-47</span>
+          &nbsp;- запись на ремонт круглосуточно<br>
+          (WhatsApp, Viber)
+        %p.text
+          %strong Электронная почта: <br>
+          %a{:href => "mailto:welcome@techracing.ru"} <span itemprop="email">welcome@techracing.ru</span>
+          &nbsp;- по любым вопросам
+
+    %section.contact-us
+      %h2.heading Напишите нам
+      = form_tag new_feedback_path, method: "post", remote: false, id: 'feedback-validate' do
+
+        = hidden_field_tag :session_id , session.id
+        = hidden_field_tag :source , user_activity_source
+
+        .form-group
+          .ui-input-group
+            = text_field_tag :name, '', class: 'form-control', required: '', placeholder: 'Имя'
+            %span.input-bar
+
+        .form-group
+          .ui-input-group
+            = text_field_tag :email, '', class: 'form-control', required: '', type: 'email', placeholder: 'E-Mail'
+            %span.input-bar
+
+        .form-group
+          .ui-input-group
+            = text_area_tag :message, '', class: 'form-control', required: '', rows: '4'
+            %span.input-bar
+        /
+          .form-group
+            .g-recaptcha{'data-sitekey' => "6LexlBcTAAAAAFrt2wEG85if0yG9fHxgDT3UTseW"}
+
+        .form-group
+          = submit_tag 'Отправить', class: 'scotch-button'
+
+    %section.vk
+      .vk-info
+        %h2.heading Присоединяйтесь к нашей группе&nbsp;VKontakte
+        %p.text
+          Если Вы хотите быть в курсе самых свежих новостей, акций и мероприятий TechRacing, записаться на ремонт или же просто получить консультацию по Вашему проекту, присоединяйтесь к нам в нашей группе&nbsp;VKontakte. Задавайте вопросы организаторам нашей группы или на нашей стене.
+        %p.text <b>Будем рады помочь Вам!</b>
+      .vk-widget{:id => 'vk_groups'}
+      %script{:type => "text/javascript"}
+        VK.Widgets.Group("vk_groups", {mode: 0, width: "220", height: "320", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 14995646);
+
+= render 'flash_modal'
